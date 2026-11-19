@@ -94,17 +94,6 @@ const Login = () => {
     }
   };
 
-  // Demo auto-fill helper for test convenience
-  const handleQuickDemo = () => {
-    setFormData({
-      email: 'demo@example.com',
-      password: 'password123',
-      rememberMe: true,
-    });
-    setErrors({});
-    setServerError('');
-  };
-
   return (
     <div className="auth-wrapper">
       <div className="auth-container">
@@ -300,16 +289,6 @@ const Login = () => {
                   <ArrowRight size={18} />
                 </>
               )}
-            </button>
-
-            {/* Quick Demo Fill Helper */}
-            <button
-              type="button"
-              className="demo-badge-btn"
-              onClick={handleQuickDemo}
-            >
-              <Sparkles size={14} />
-              <span>Fill Demo Credentials</span>
             </button>
           </form>
 
