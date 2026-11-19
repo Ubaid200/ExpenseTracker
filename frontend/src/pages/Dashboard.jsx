@@ -416,16 +416,7 @@ const Dashboard = () => {
               <select
                 value={txLimit}
                 onChange={(e) => setTxLimit(Number(e.target.value))}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#94a3b8',
-                  borderRadius: '6px',
-                  padding: '0.25rem 0.4rem',
-                  fontSize: '0.75rem',
-                  outline: 'none',
-                  cursor: 'pointer'
-                }}
+                className="tx-limit-select"
               >
                 <option value={5} style={{ background: '#0f172a' }}>Top 5</option>
                 <option value={8} style={{ background: '#0f172a' }}>Top 8</option>
