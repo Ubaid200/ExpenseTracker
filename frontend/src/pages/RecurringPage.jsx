@@ -197,122 +197,147 @@ export const RecurringPage = () => {
           </button>
         </div>
       ) : (
-        <div className="recurring-grid">
-          {recurring.map((item) => {
-            const isInc = item.type === 'income';
-            const catName = item.category?.name || 'Category';
-            const catColor = item.category?.color || '#6366f1';
-            const accName = item.account?.name || 'Account';
-            const dueDate = item.nextDueDate ? new Date(item.nextDueDate).toLocaleDateString() : 'N/A';
+        <div className="recurring-table-card">
+          <div className="recurring-table-wrapper">
+            <table className="recurring-table">
+              <thead>
+                <tr>
+                  <th>Rule / Note</th>
+                  <th>Category</th>
+                  <th>Frequency</th>
+                  <th>Account</th>
+                  <th>Next Due Date</th>
+                  <th style={{ textAlign: 'right' }}>Amount</th>
+                  <th style={{ textAlign: 'center' }}>Status</th>
+                  <th style={{ textAlign: 'center' }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recurring.map((item) => {
+                  const isInc = item.type === 'income';
+                  const catName = item.category?.name || 'Category';
+                  const catColor = item.category?.color || '#6366f1';
+                  const accName = item.account?.name || 'Account';
+                  const dueDate = item.nextDueDate ? new Date(item.nextDueDate).toLocaleDateString() : 'N/A';
 
-            return (
-              <div
-                key={item._id}
-                className="recurring-card"
-                style={{
-                  opacity: item.isActive ? 1 : 0.65
-                }}
-              >
-                <div>
-                  <div className="recurring-card-header">
-                    <div className="recurring-badge-group">
-                      <div style={{
-                        width: '32px',
-                        height: '32px',
-                        minWidth: '32px',
-                        borderRadius: '8px',
-                        background: isInc ? 'rgba(16, 185, 129, 0.15)' : 'rgba(244, 63, 94, 0.15)',
-                        color: isInc ? '#10b981' : '#f43f5e',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexShrink: 0
-                      }}>
-                        {isInc ? <ArrowUpRight size={17} /> : <ArrowDownRight size={17} />}
-                      </div>
-                      <span style={{
-                        padding: '0.15rem 0.5rem',
-                        borderRadius: '4px',
-                        background: `${catColor}20`,
-                        color: catColor,
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }}>
-                        {catName}
-                      </span>
-                    </div>
+                  return (
+                    <tr
+                      key={item._id}
+                      style={{ opacity: item.isActive ? 1 : 0.65 }}
+                    >
+                      {/* Rule / Note */}
+                      <td className="recurring-td">
+                        <div className="recurring-rule-title">
+                          {item.description}
+                        </div>
+                      </td>
 
-                    {/* Frequency Badge */}
-                    <span style={{
-                      padding: '0.2rem 0.55rem',
-                      borderRadius: '12px',
-                      background: 'rgba(99, 102, 241, 0.2)',
-                      color: '#a5b4fc',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      textTransform: 'capitalize',
-                      flexShrink: 0
-                    }}>
-                      {item.frequency}
-                    </span>
-                  </div>
+                      {/* Category */}
+                      <td className="recurring-td">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                          <div style={{
+                            width: '30px',
+                            height: '30px',
+                            borderRadius: '7px',
+                            background: isInc ? 'rgba(16, 185, 129, 0.15)' : 'rgba(244, 63, 94, 0.15)',
+                            color: isInc ? '#10b981' : '#f43f5e',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0
+                          }}>
+                            {isInc ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+                          </div>
+                          <span style={{
+                            padding: '0.2rem 0.55rem',
+                            borderRadius: '4px',
+                            background: `${catColor}20`,
+                            color: catColor,
+                            fontSize: '0.75rem',
+                            fontWeight: 600,
+                            whiteSpace: 'nowrap'
+                          }}>
+                            {catName}
+                          </span>
+                        </div>
+                      </td>
 
-                  <h3 className="recurring-title">
-                    {item.description}
-                  </h3>
+                      {/* Frequency Badge */}
+                      <td className="recurring-td">
+                        <span style={{
+                          padding: '0.25rem 0.65rem',
+                          borderRadius: '12px',
+                          background: 'rgba(99, 102, 241, 0.2)',
+                          color: '#a5b4fc',
+                          fontSize: '0.75rem',
+                          fontWeight: 600,
+                          textTransform: 'capitalize',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          {item.frequency}
+                        </span>
+                      </td>
 
-                  <div className="recurring-amount" style={{ color: isInc ? '#10b981' : '#f43f5e' }}>
-                    {isInc ? '+' : '−'}{formatCurrency(item.amount)}
-                  </div>
+                      {/* Account */}
+                      <td className="recurring-td">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: '#cbd5e1', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+                          <Wallet size={14} color="#94a3b8" style={{ flexShrink: 0 }} />
+                          <span>{accName}</span>
+                        </div>
+                      </td>
 
-                  <div className="recurring-meta">
-                    <div className="recurring-meta-row">
-                      <Wallet size={13} style={{ flexShrink: 0 }} />
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Account: <strong style={{ color: '#cbd5e1' }}>{accName}</strong></span>
-                    </div>
-                    <div className="recurring-meta-row">
-                      <Clock size={13} color="#818cf8" style={{ flexShrink: 0 }} />
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Next Due Date: <strong style={{ color: '#cbd5e1' }}>{dueDate}</strong></span>
-                    </div>
-                  </div>
-                </div>
+                      {/* Next Due Date */}
+                      <td className="recurring-td" style={{ color: '#94a3b8', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                          <Clock size={14} color="#818cf8" style={{ flexShrink: 0 }} />
+                          <strong style={{ color: '#cbd5e1', fontWeight: 500 }}>{dueDate}</strong>
+                        </div>
+                      </td>
 
-                {/* Footer Controls: Active Toggle & Delete */}
-                <div className="recurring-footer">
-                  <button
-                    onClick={() => handleToggleActive(item)}
-                    style={{
-                      background: item.isActive ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-                      border: `1px solid ${item.isActive ? 'rgba(16, 185, 129, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
-                      color: item.isActive ? '#34d399' : '#94a3b8',
-                      borderRadius: '6px',
-                      padding: '0.35rem 0.75rem',
-                      fontSize: '0.8rem',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.35rem'
-                    }}
-                  >
-                    {item.isActive && <Check size={13} />}
-                    <span>{item.isActive ? 'Active' : 'Paused'}</span>
-                  </button>
+                      {/* Amount */}
+                      <td className="recurring-td" style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <span style={{
+                          fontWeight: 700,
+                          fontSize: '1rem',
+                          color: isInc ? '#10b981' : '#f43f5e'
+                        }}>
+                          {isInc ? '+' : '−'}{formatCurrency(item.amount)}
+                        </span>
+                      </td>
 
-                  <button
-                    onClick={() => handleDelete(item._id)}
-                    style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: '0.35rem' }}
-                    title="Delete rule"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+                      {/* Status Toggle */}
+                      <td className="recurring-td" style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
+                        <button
+                          onClick={() => handleToggleActive(item)}
+                          className="recurring-status-btn"
+                          style={{
+                            background: item.isActive ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                            border: `1px solid ${item.isActive ? 'rgba(16, 185, 129, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
+                            color: item.isActive ? '#34d399' : '#94a3b8'
+                          }}
+                          title={item.isActive ? 'Click to Pause Rule' : 'Click to Activate Rule'}
+                        >
+                          {item.isActive && <Check size={13} />}
+                          <span>{item.isActive ? 'Active' : 'Paused'}</span>
+                        </button>
+                      </td>
+
+                      {/* Delete Action */}
+                      <td className="recurring-td" style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
+                        <button
+                          onClick={() => handleDelete(item._id)}
+                          className="recurring-action-btn"
+                          title="Delete rule"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 

@@ -8,6 +8,8 @@ Designed with an intuitive dark-themed UI, fixed sticky sidebar navigation, real
 
 ## 📌 Table of Contents
 - [Project Overview](#-project-overview)
+- [Video Demo & Walkthrough](#-video-demo--walkthrough)
+- [Application Screenshots](#-application-screenshots)
 - [Key Features](#-key-features)
 - [Architecture & Tech Stack](#-architecture--tech-stack)
 - [Project Directory Structure](#-project-directory-structure)
@@ -26,6 +28,67 @@ Managing personal finances shouldn't be cumbersome or scattered across spreadshe
 - **Currency Standard**: Built natively with Indian Rupee (`₹` / INR) formatting (`en-IN`) across all cards, graphs, and input modals.
 - **Responsive Design**: Custom responsive layouts optimized for desktop monitors, 768px laptop viewports, tablets, and Android mobile devices without vertical clipping or overflow issues.
 - **Real-Time Computations**: All charts, balances, and budget progress indicators are computed dynamically from stored database transactions.
+
+---
+
+## 🎬 Video Demo & Walkthrough
+
+Watch the complete interactive video demonstration covering user authentication, multi-wallet ledger, transaction filtering, CSV export, monthly/category budgets, and recurring rules:
+
+[![ExpenseTracker Full Demo Walkthrough](https://img.youtube.com/vi/oA9MdINWKZ0/maxresdefault.jpg)](https://youtu.be/oA9MdINWKZ0)
+
+> ▶️ **Watch on YouTube**: [ExpenseTracker Full Demo Walkthrough (Live Video)](https://youtu.be/oA9MdINWKZ0)
+
+---
+
+## 📸 Application Screenshots
+
+### 1. User Authentication (Login & Registration)
+| Sign In Page (`/login`) | Registration Page (`/register`) |
+|:---:|:---:|
+| ![Sign In](img/image1.PNG) | ![Create Account](img/image2.PNG) |
+
+---
+
+### 2. Financial Dashboard
+> *Live KPI metric cards (Current Balance, Total Income, Total Expenses), monthly budget utilization progress bar, historical spending trends chart, and recent ledger entries.*
+![Dashboard Overview](img/image3.PNG)
+
+---
+
+### 3. Transaction History & Filterable Ledger
+> *Server-side paginated ledger with real-time combinable filters (Type, Category, Account, Date Range, Amount Range), live search, and one-click CSV export.*
+![Transaction History](img/image4.PNG)
+
+---
+
+### 4. Financial Analytics & Visual Trends
+> *Category-wise donut breakdown chart and switchable spending trends (Week | Month | 3 Months | Year) computed from real database records.*
+![Financial Analytics](img/image5.PNG)
+
+---
+
+### 5. Multi-Account & Digital Wallet Ledger
+> *Manage Bank Accounts, Cash, Digital Wallets, and Credit Cards with individual balances and combined liquid net worth.*
+![Accounts & Wallets](img/image6.PNG)
+
+---
+
+### 6. Monthly & Category-Level Budgets
+> *Overall monthly spending ceilings with tiered warnings at 50%, 75%, 90%, and 100%+ along with independent category limits.*
+![Budgets & Limits](img/image7.PNG)
+
+---
+
+### 7. Savings Goals & Milestone Tracking
+> *Set financial targets, deadlines, monitor saved amounts and progress percentage, and deposit funds towards milestones.*
+![Savings Goals](img/image8.PNG)
+
+---
+
+### 8. Automated Recurring Transactions (Table View)
+> *Structured table view for Daily, Weekly, Monthly, and Yearly recurring bills, subscriptions, and salaries with Active/Paused toggles.*
+![Recurring Transactions Table](img/image9.PNG)
 
 ---
 
@@ -196,6 +259,16 @@ Expensetracker/
 │   │   └── index.css              # Global styles & dark design tokens
 │   ├── package.json
 │   └── vite.config.js
+├── img/                               # Application UI screenshots & demo assets
+│   ├── image1.PNG                     # Sign In screen
+│   ├── image2.PNG                     # Registration screen
+│   ├── image3.PNG                     # Financial Dashboard
+│   ├── image4.PNG                     # Transactions ledger & CSV export
+│   ├── image5.PNG                     # Financial analytics & charts
+│   ├── image6.PNG                     # Accounts & multi-wallet ledger
+│   ├── image7.PNG                     # Monthly & category budgets
+│   ├── image8.PNG                     # Savings goals milestones
+│   └── image9.PNG                     # Recurring transactions table
 └── README.md
 ```
 

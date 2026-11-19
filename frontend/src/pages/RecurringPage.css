@@ -1,136 +1,97 @@
-/* Recurring Transactions Stylesheet - Fully Responsive for Mobile & Android Mini */
+/* Recurring Transactions Stylesheet - Clean Table Layout & Responsive */
 
-.recurring-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.recurring-card {
+.recurring-table-card {
   background: rgba(15, 23, 42, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  padding: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  backdrop-filter: blur(10px);
-  min-width: 0;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
   overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.recurring-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.85rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   width: 100%;
   box-sizing: border-box;
 }
 
-.recurring-badge-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 0;
-  flex: 1;
-  overflow: hidden;
+.recurring-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
-.recurring-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  color: #fff;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  min-width: 0;
+.recurring-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 780px;
 }
 
-.recurring-amount {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.recurring-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  font-size: 0.8rem;
+.recurring-table thead tr {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #94a3b8;
-  margin-bottom: 1.25rem;
-  width: 100%;
-  box-sizing: border-box;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.recurring-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.recurring-table th {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
-.recurring-footer {
-  display: flex;
+.recurring-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.recurring-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.recurring-table td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+}
+
+.recurring-rule-title {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.recurring-status-btn {
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  gap: 0.5rem;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
 }
 
-/* Mobile Breakpoint */
-@media (max-width: 680px) {
-  .recurring-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
-  }
-
-  .recurring-card {
-    padding: 1.15rem 1rem;
-  }
-
-  .recurring-amount {
-    font-size: 1.35rem;
-  }
+.recurring-action-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
 }
 
-/* Android Mini & Small Devices (<= 400px) */
-@media (max-width: 400px) {
-  .recurring-card {
-    padding: 0.95rem 0.8rem;
-  }
+.recurring-action-btn:hover {
+  color: #f43f5e;
+}
 
-  .recurring-title {
-    font-size: 1.05rem;
-  }
-
-  .recurring-amount {
-    font-size: 1.25rem;
-  }
-
-  .recurring-meta {
-    font-size: 0.75rem;
-  }
-
-  .recurring-footer {
-    padding-top: 0.75rem;
+@media (max-width: 768px) {
+  .recurring-table th,
+  .recurring-table td {
+    padding: 0.85rem 1rem;
   }
 }
